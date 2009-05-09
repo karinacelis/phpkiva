@@ -36,15 +36,6 @@ interface Lenders{
 class KivaLender extends ApiConnector implements Lenders{
 	
 	/**
-	 * Just constructor
-	 * @param string $returntype the response format(xml{default},json,html) from Kiva
-	 * @return null
-	 */
-	function __construct($returntype='xml') {
-		$this->returntype = $returntype;
-	}
-	
-	/**
 	 * (non-PHPdoc)
 	 * @see Lenders#getLendersInfo()
 	 */
