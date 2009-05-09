@@ -2,6 +2,15 @@
 abstract class ApiConnector{
 
 	/**
+	 * Just constructor
+	 * @param string $returntype the response format(xml{default},json,html) from Kiva
+	 * @return null
+	 */
+	function __construct($returntype='xml') {
+		$this->returntype = $returntype;
+	}
+	
+	/**
 	 * Getter function for returntype
 	 * @return string $returntype the response format
 	 */
@@ -77,5 +86,7 @@ abstract class ApiConnector{
 		}
 		return $response;
 	}
+	
+	protected $returntype = null;
 }
 ?>

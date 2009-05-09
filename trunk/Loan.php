@@ -51,15 +51,6 @@ interface Loans{
 class KivaLoan extends ApiConnector implements Loans{
 
 	/**
-	 * Just constructor
-	 * @param string $returntype the response format(xml{default},json,html) from Kiva
-	 * @return null
-	 */
-	function __construct($returntype='xml') {
-		$this->returntype = $returntype;
-	}
-
-	/**
 	 * (non-PHPdoc)
 	 * @see Loans#getRecentLoans()
 	 *
@@ -139,6 +130,6 @@ class KivaLoan extends ApiConnector implements Loans{
 		return $response;
 	}
 	 
-	private $returntype = null;
+	
 }
 ?>
