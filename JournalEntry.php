@@ -7,6 +7,11 @@ interface JournalEntries{
 	 * @return comments
 	 */
 	public function getComments($id,$params=null);
+	/**
+	 * 
+	 * @param $params Array of optional parameters : 'page','partner','q','sort_by','media'
+	 * @return Journal Entries
+	 */
 	public function searchJournalEntries($params=null);
 	const baseUrl = 'http://api.kivaws.org/v1/journal_entries/';
 }
