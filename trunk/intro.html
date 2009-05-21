@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+<body>
+PhpKiva is a simple PHP5 library for accessing data from Kiva API.It presents a simple object oriented interface to query the <a href="http://build.kiva.org">Kiva API </a>to obtain results in the formats supported by Kiva-.json,.xml and .html
+
+<h2>Requirements</h2>
+<ul>
+	<li>Php5</li>
+	<li>curl</li>
+</ul>
+<h2>Description</h2>
+<p>Kiva API has been built around 4 primary objects in the Kiva World.PhpKiva extends a Php class for all 4 objects, providing functionalities on all those 4 objects.Here is a list of Kiva Objects and their corresponding PhpKiva classes:</p>
+<ul>
+  <li>Loan - This is the primary object of the Kiva API. The corresponding mapping in PhpKiva for the loan object is the class KivaLoan in Loan.php</li>
+  <li>Lender - Another highly important component which is mapped as class KivaLender in Lender.php</li>
+  <li>Partner - Object for Kiva Partners(MFI's) represented as class KivaPartner in Partner.php</li>
+  <li>Journal Entry - Wrapped as class KivaJournalEntry in JournalEntry.php</li>
+</ul>
+<p>For the query string of all API calls, the phpKiva interface takes an equivalent array of (key,value) pair and constructs a query string from it so that the users of the phpKiva API can work with standard PHP arrays itself.</p>
+<p><strong>Loan</strong></p>
+<table width="1055">
+  <tr>
+    <td width="156"><strong>Kiva API Call</strong></td>
+    <td width="225"><strong>phpKiva equivalent method</strong></td>
+    <td width="658"><strong>Parameters</strong></td>
+  </tr>
+  <tr>
+    <td><a href="http://developers.wiki.kiva.org/KivaAPI#loans/newest">loans/newest</a></td>
+    <td>getRecentLoans($params)</td>
+    <td>$params(optional): Array of optional parameters : 'page' [since there is one parameter, a string having it also works]</td>
+  </tr>
+  <tr>
+    <td><a href="http://developers.wiki.kiva.org/KivaAPI#loans/ltidsgt">loans/(ids)</a></td>
+    <td>getLoansInfo($ids)</td>
+    <td>$ids(required) : array of ids((upto 10 supported by Kiva Api)) to fetch info for.</td>
+  </tr>
+  <tr>
+    <td><a href="http://developers.wiki.kiva.org/KivaAPI#loans/ltidgt/lenders">loans/(id)/lenders</a></td>
+    <td>getLenders($id,$params)</td>
+    <td><p>$id(required) : id of the loan for which lender information is required.<br />
+      $params(optional) : Array of optional parameters : 'page' [since there is one parameter, a string having it also works]<br />
+    </p>    </td>
+  </tr>
+  <tr>
+    <td><a href="http://developers.wiki.kiva.org/KivaAPI#loans/ltidgt/journalentries">loans/(id)/journal_entries</a></td>
+    <td>getJournalEntries($id,$params)</td>
+    <td>$id(required) : The identification number for a loan<br />
+$params(optional) : Array of optional parameters : 'page','include_bulk'<br /></td>
+  </tr>
+  <tr>
+    <td><a href="http://developers.wiki.kiva.org/KivaAPI#loans/search">loans/search</a></td>
+    <td>searchLoans($params)</td>
+    <td>$params(optional) : Array of optional parameters : 'page','status','gender','sector','region','country_code','partner','q'<br />
+*To provide a list of 'sector','region' construct an array within the main array at these keys</td>
+  </tr>
+  <tr>
+    <td><a href="http://developers.wiki.kiva.org/KivaAPI#loans/ltidgt/updates">loans/(id)/updates</a></td>
+    <td>getStatusUpdates($id)</td>
+    <td>$id(required)</td>
+  </tr>
+</table>
+<p><strong>Lender</strong></p>
+<table width="1052">
+  <tr>
+    <td width="154"><strong>Kiva API Call</strong></td>
+    <td width="234"><strong>phpKiva equivalent method</strong></td>
+    <td width="648"><strong>Parameters</strong></td>
+  </tr>
+  <tr>
+    <td><a href="http://developers.wiki.kiva.org/KivaAPI#lenders/ltlenderidsgt">lenders/(lender_ids)</a></td>
+    <td>getLendersInfo($ids)</td>
+    <td>$ids(required) : array of ids((upto 10 supported by Kiva Api)) to fetch info for.</td>
+  </tr>
+  <tr>
+    <td><a href="http://developers.wiki.kiva.org/KivaAPI#lenders/ltlenderidgt/loans">lenders/(lender_id)/loans</a></td>
+    <td>getLenderLoans($id,$params)</td>
+    <td>$id(required) : The lender ID of a kiva lender <br />
+$params(optional) : Array of optional parameters : 'sort_by','page'</td>
+  </tr>
+  <tr>
+    <td><a href="http://developers.wiki.kiva.org/KivaAPI#lenders/newest">lenders/newest</a></td>
+    <td>getRecentLenders($params)</td>
+    <td>$params(optional) : Array of optional parameters : 'page' [since there is one parameter, a string having it also works]</td>
+  </tr>
+  <tr>
+    <td><a href="http://developers.wiki.kiva.org/KivaAPI#lenders/search">lenders/search</a></td>
+    <td>searchLenders($params)</td>
+    <td>$params (optional): Array of optional parameters : 'page','sort_by','occupation','country_code','q'</td>
+  </tr>
+</table>
+<p><strong>Partner</strong> </p>
+<table width="1048">
+  <tr>
+    <td width="106"><strong>Kiva API Call</strong></td>
+    <td width="207"><strong>phpKiva equivalent method</strong></td>
+    <td width="719"><strong>Parameters</strong></td>
+  </tr>
+  <tr>
+    <td><a href="http://developers.wiki.kiva.org/KivaAPI#partners">partners</a></td>
+    <td>getPartners($params)</td>
+    <td>$params(optional) : Array of optional parameters : 'page' [since there is one parameter, a string having it also works]</td>
+  </tr>
+</table>
+<p><strong>JournalEntry</strong></p>
+<table width="1046">
+  <tr>
+    <td width="186"><strong>Kiva API Call</strong></td>
+    <td width="136"><strong>phpKiva equivalent method</strong></td>
+    <td width="708"><strong>Parameters</strong></td>
+  </tr>
+  <tr>
+    <td><a href="http://developers.wiki.kiva.org/KivaAPI#journalentries/ltidgt/comments">journal_entries/(id)/comments</a></td>
+    <td>getComments($id,$params)</td>
+    <td><p>$id (required): id of the journal entry  <br />
+    $params(optional) : Array of optional parameters : 'page' [since there is one parameter, a string having it also works]</p>    </td>
+  </tr>
+  <tr>
+  	<td></td>
+  	<td>searchJournalEntries($params)</td>
+  	<td>$params(optional) : Array of optional parameters.</td>
+  </tr>
+</table>
+<h2>Installation</h2>
+<p>All the above classes sub-class from a base class implemented in ApiConnector.php. Hence, in order to use a particular php file, the ApiConnector.php would also be required.So here are the step-by-step directions for using the API:</p>
+<ol>
+  <li>Download ApiConnector.php</li>
+  <li>Download the corresponding php file for the Kiva object that you plan to use.For instance, if you are building an application dealing only with Lender information, then you only need the class KivaLender in Lender.php and hence, downloading just that file would suffice.However, if you plan to use more than one type of Kiva Object, then you require multiple classes and hence, the corresponding files.</li>
+  <li>Simple include them in your code using for instance<em>: require 'Loan.php'</em>.</li>
+  <li>Instantiate the object and set the return format (json,xml,html) in which you want the desired ouput.By defauly, phpKiva returns results from Kiva in XML format.However, that can easily be changed while instantiating the object or by using the <em>setReturnType</em> function</li>
+</ol>
+<h2>Examples</h2>
+</body>
+</html>
