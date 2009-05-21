@@ -1,0 +1,18 @@
+#Description
+
+= How to Use the API=
+
+Kiva API has been built around 4 primary objects in the Kiva World.PhpKiva? extends a Php class for all 4 objects, providing functionalities on all those 4 objects.Here is a list of Kiva Objects and their corresponding PhpKiva? classes:
+
+ * Loan - This is the primary object of the Kiva API. The corresponding mapping in PhpKiva for the loan object is the class *KivaLoan* in *Loan.php*
+ * Lender - Another highly important component which is mapped as class *KivaLender* in *Lender.php*
+ * Partner - Object for Kiva Partners(MFI's) represented as class *KivaPartner* in *Partner.php*
+ * Journal Entry - Wrapped as class *KivaJournalEntry* in *JournalEntry.php*
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
