@@ -1,5 +1,16 @@
 <?php
+//sample file to test API functions
 
+/*
+require 'JournalEntry.php';
+$loanObj = new KivaJournalEntry();
+if($loanObj->setReturnType('html')){
+	$params = Array("partner" => 23,"page" => 3);
+	$response = $loanObj->searchJournalEntries($params);
+	echo $response;
+}
+*/
+/*
 require 'loan.php';
 $loanObj = new KivaLoan();
 if($loanObj->setReturnType('html')){;
@@ -12,6 +23,7 @@ if($loanObj->setReturnType('html')){;
 	//$response = $loanObj->searchLoans($params);
 	echo $response;
 }
+*/
 /*
 require 'lender.php';
 $lenderObj = new KivaLender();
