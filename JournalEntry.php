@@ -7,6 +7,7 @@ interface JournalEntries{
 	 * @return comments
 	 */
 	public function getComments($id,$params=null);
+	public function searchJournalEntries($params=null);
 	const baseUrl = 'http://api.kivaws.org/v1/journal_entries/';
 }
 
@@ -33,6 +34,16 @@ class KivaJournalEntry extends ApiConnector implements JournalEntries {
 			$request = JournalEntries::baseUrl . $id . '/comments.' .$this->getReturnType();
 			$response = $this->getResponse($request,$params);
 		}
+		return $response;
+	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see JournalEntries#searchJournalEntries()
+	 */
+	public function searchJournalEntries($params=null){
+		$request = JournalEntries::baseUrl . 'search.' .$this->getReturnType();
+		$response = $this->getResponse($request,$params);
 		return $response;
 	}
 } 
